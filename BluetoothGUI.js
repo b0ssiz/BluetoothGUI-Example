@@ -48,8 +48,8 @@ function setup() {
   LEDoffButton.mousePressed(LEDoff);
   LEDoffButton.position(LEDonButton.x+LEDonButton.width+10, 60);
 
-  ledColorPicker = createColorPicker('#ff0000');
-  ledColorPicker.position(LEDoffButton.x+LEDoffButton.width+10, 60);
+  // ledColorPicker = createColorPicker('#ff0000');
+  // ledColorPicker.position(LEDoffButton.x+LEDoffButton.width+10, 60);
   millisecondTimerStart = millis();
 }
 
