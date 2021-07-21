@@ -14,8 +14,8 @@
  * 
  * License?  Do whatever you want with this code - it's just a sample
  */
- 
- //globals
+
+//globals
 let blueToothCharacteristic;//this is a blu
 let receivedValue = "";
 
@@ -30,8 +30,8 @@ var oldColorPickerValue;
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
-  
-  
+
+
   // Create a p5ble class
   console.log("setting up");
   blueTooth = new p5ble();
@@ -40,16 +40,28 @@ function setup() {
   connectButton.mousePressed(connectToBle);
   connectButton.position(15, 15);
 
-  const LEDonButton = createButton('LED ON');
-  LEDonButton.mousePressed(LEDon);
-  LEDonButton.position(15, 60);
+  const forward_button = createButton('Forward');
+  forward_button.mousePressed(forward);
+  forward_button.mouseReleased(sendStopCommand)
+  forward_button.position(95, 100);
 
-  const LEDoffButton = createButton('LED OFF');
-  LEDoffButton.mousePressed(LEDoff);
-  LEDoffButton.position(LEDonButton.x+LEDonButton.width+10, 60);
+  const backward_button = createButton('Backward');
+  backward_button.mousePressed(backward);
+  backward_button.mouseReleased(sendStopCommand)
+  backward_button.position(95, forward_button.y + forward_button.width + 80);
+
+  const turn_left_button = createButton('Turn Left');
+  turn_left_button.mousePressed(turnLeft);
+  turn_left_button.mouseReleased(sendStopCommand)
+  turn_left_button.position(15, forward_button.y + forward_button.width + 10);
+
+  const turn_right_button = createButton('Turn Right');
+  turn_right_button.mousePressed(turnRight);
+  turn_right_button.mouseReleased(sendStopCommand)
+  turn_right_button.position(170, forward_button.y + forward_button.width + 10);
 
   ledColorPicker = createColorPicker('#ff0000');
-  ledColorPicker.position(LEDoffButton.x+LEDoffButton.width+10, 60);
+  ledColorPicker.position(300, 15);
   millisecondTimerStart = millis();
 }
 
